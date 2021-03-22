@@ -1,17 +1,26 @@
-def opener():
-    with open('README.md') as f:
+def opener(filename):
+    with open(filename) as f:
         lines = f.readlines()
     return lines
 
-def counter():
+def converter(string):
+    l = list(string.split(' '))
+    return l
+
+def counter(l):
     res=0
-    list = opener()
-    for i in range(len(list)):
-        res+=len(list[i].split())
-    print(list)
-    print("Number of words: "+str(res))
+    for i in range(len(l)):
+        res+=len(l[i].split())
+    print(l)
+    print('Number of words: '+str(res))
 
 def main():
-
+    string = input("Input file name or text you want to count words in: ")
+    try:
+        l = opener(string)
+        counter(l)
+    except:
+        l = converter(string)
+        counter(l)
 
 main()
